@@ -5,6 +5,9 @@ gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'annotate'
+gem 'backbone-on-rails'
+gem 'ejs'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -46,4 +49,10 @@ end
 gem 'simple-rss'
 group :development, :test do
   gem 'rspec-rails'
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-rails'
 end
