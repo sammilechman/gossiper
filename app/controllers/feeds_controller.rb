@@ -1,6 +1,7 @@
 class FeedsController < ApplicationController
+  before_action :check_for_update, :only => [:show]
+
   def index
-    # TODO: Add time 2 min check
     respond_to do |format|
       format.html { render :index }
       format.json { render :json => Feed.all }
@@ -19,6 +20,13 @@ class FeedsController < ApplicationController
   def show
     feed = Feed.find(params[:id])
     render :json => feed, include: :entries
+  end
+
+  def check_for_update
+    feed = Feed.find(params[:id])
+    last_updated = feed.updated_at.to_time
+    current_time = Time.now
+    feed.reload if (((current_time - last_updated) / 60) > 0.2)
   end
 
   private

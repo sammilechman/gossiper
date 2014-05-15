@@ -7,6 +7,10 @@ window.Gossip.Views.EntriesShow = Backbone.View.extend({
 
   template: JST['entries/show'],
 
+  events: {
+    'click button#back': 'goBack',
+  },
+
   render: function() {
     var view = this;
     var renderedContent = this.template({
@@ -18,6 +22,7 @@ window.Gossip.Views.EntriesShow = Backbone.View.extend({
     return this;
   },
 
-
-
+  goBack: function() {
+    Backbone.history.navigate("" + this.entry.feed_id, { trigger: true });
+  }
 });

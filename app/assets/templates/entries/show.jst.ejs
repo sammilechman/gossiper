@@ -1,4 +1,11 @@
 <h3>Entries SHOW page</h3>
 
-<%= entry.escape('title') %>
-<%= entry.escape('link') %>
+Title: <%= entry.escape('title') %><br>
+Link: <%= entry.escape('link') %><br>
+GUID: <%= entry.escape('guid') %><br>
+Feed ID: <%= entry.escape('feed_id') %><br>
+Published at: <%= entry.escape('published_at') %><br>
+Created at: <%= entry.escape('created_at') %><br>
+Updated at: <%= entry.escape('updated_at') %><br>
+
+<button id="back">Back</button>
