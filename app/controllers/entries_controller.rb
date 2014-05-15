@@ -4,6 +4,11 @@ class EntriesController < ApplicationController
     render :json => feed.entries
   end
 
+  def show
+    entry = Entry.find(params[:id])
+    render :json => entry
+  end
+
   private
   def entry_params
     params.require(:entry)

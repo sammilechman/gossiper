@@ -1,7 +1,8 @@
 window.Gossip.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "" : "feedsIndex",
-    ":id": "feedShow"
+    ":id": "feedShow",
+    "entries/:id": "entryShow"
   },
 
   feedsIndex: function() {
@@ -16,13 +17,23 @@ window.Gossip.Routers.AppRouter = Backbone.Router.extend({
 
   feedShow: function (id) {
     var feed = Gossip.Collections.feeds.getOrFetch(id);
-
+    feed.fetch();
     var feedShowView = new Gossip.Views.FeedsShow({
       model: feed
     });
 
     this._swapView(feedShowView);
 
+  },
+
+  entryShow: function(id) {
+    var entry = new Gossip.Models.FeedEntry({ id: id });
+    entry.fetch();
+    var entryShowView = new Gossip.Views.EntriesShow({
+      entry: entry
+    });
+
+    this._swapView(entryShowView);
   },
 
   _swapView: function(view) {

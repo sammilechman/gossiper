@@ -1,3 +1,16 @@
-<h6> feed view</h6>
+<h6> Feed view</h6>
 
-<%= feed.escape('title') %>
+<div>
+<button id="refresh-feed">Refresh</button>
+</div>
+
+Feed: <%= feed.escape('title') %>
+
+<% feed.entries().each(function(entry) { %>
+
+<p>
+<a href="#/entries/<%= entry.id %>"><%= entry.escape('title') %></a>
+</p>
+
+<% }); %>
+

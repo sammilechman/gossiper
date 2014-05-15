@@ -18,7 +18,7 @@ class FeedsController < ApplicationController
 
   def show
     feed = Feed.find(params[:id])
-    render :json => feed
+    render :json => feed, include: :entries
   end
 
   private
